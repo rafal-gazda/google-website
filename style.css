@@ -107,15 +107,52 @@ textarea, select, input, button { outline: none; }
     justify-content: center;
 }
 
+.search__container
+{
+    position: relative;
+}
+
+.icon__container--left
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+}
+
+.fa-search
+{
+    color: #4285F4;
+}
+
+.fa-microphone
+{
+    color: #4285F4;
+    margin-left: 15px;
+}
+
+.icon__container--right
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+
 .search__input
 {
-    height: 46rem;
+    height: 50rem;
     width: 580rem;
     padding: 5rem 15rem;
     border-radius: 25rem;
     border: 1rem solid #dfe1e5;
     font-size: 16rem;
     box-sizing: border-box;
+}
+
+.search__icon
+{
+    font-size: 15rem;
 }
 
 .button
@@ -127,7 +164,7 @@ textarea, select, input, button { outline: none; }
     margin: 25rem; 
 }
 
-.button__item
+.button .button__item
 {
     height: 36rem;
     line-height: 27rem;
@@ -149,7 +186,8 @@ textarea, select, input, button { outline: none; }
     border-top: 1rem solid #e4e4e4;
     position: absolute;
     width: 100%;    
-    bottom: 0rem;
+    bottom: 0;
+    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -183,6 +221,7 @@ textarea, select, input, button { outline: none; }
     justify-content: space-between;
     align-items: center;
     font-size: 13rem;
+    box-sizing: border-box;
 }
 
 .footer__nav
@@ -204,6 +243,7 @@ textarea, select, input, button { outline: none; }
 
 .nav__item
 {
+    box-sizing: border-box;
     text-decoration: none;
     color: #5F6368;
     padding: 15rem;

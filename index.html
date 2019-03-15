@@ -4,15 +4,26 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Google</title>
-    <meta name="description" content=""/>
+    <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="normalize.css" />
     <link rel="icon" href="img/faviicon.png" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-      <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="header">
@@ -42,44 +53,68 @@
         <header class="logo">
           <img src="./img/logo.png" alt="google logo" class="logo__img" />
         </header>
-        <div class="search">
+        <div id="app" class="search">
           <div class="search__container">
             <div class="icon__container icon__container--left">
               <i class="fas fa-search search__icon"></i>
             </div>
-            <input type="text" class="search__input"/>
+            <div class="container-item">
+              <autocomplete class="search__input" />
+            </div>
             <div class="icon__container icon__container--right">
               <i class="far fa-keyboard search__icon"></i>
               <i class="fas fa-microphone search__icon"></i>
             </div>
           </div>
           <div class="button mb">
-            <button class="button__item foo-button mdc-button">google search</button>
-            <button class="button__item foo-button mdc-button">i'm feeling lucky</button>
+            <button class="button__item foo-button mdc-button">
+              google search
+            </button>
+            <button class="button__item foo-button mdc-button">
+              i'm feeling lucky
+            </button>
           </div>
         </div>
       </div>
     </main>
     <footer class="footer">
-        <div class="footer__top">
-            <p class="footer__text">Poland</p>
-        </div>
-        <div class="footer__bottom">
-            <nav class="footer__box">
-                <div class="footer__nav">
-                   <a class="nav__item" href="">Advertising</a>
-                   <a class="nav__item" href="">Business</a>
-                   <a class="nav__item" href="">About</a>
-                </div>
-                <div class="footer__nav footer__nav--right">
-                    <a class="nav__item" href="">Privacy</a>
-                    <a class="nav__item" href="">Terms</a>
-                    <a class="nav__item" href="">Settings</a>
-                </div>
-            </nav>
-        </div>
+      <div class="footer__top">
+        <p class="footer__text">Poland</p>
+      </div>
+      <div class="footer__bottom">
+        <nav class="footer__box">
+          <div class="footer__nav">
+            <a class="nav__item" href="">Advertising</a>
+            <a class="nav__item" href="">Business</a>
+            <a class="nav__item" href="">About</a>
+          </div>
+          <div class="footer__nav footer__nav--right">
+            <a class="nav__item" href="">Privacy</a>
+            <a class="nav__item" href="">Terms</a>
+            <a class="nav__item" href="">Settings</a>
+          </div>
+        </nav>
+      </div>
     </footer>
+    <script type="text/x-template" id="autocomplete-tpl">
+      <div class="autocomplete">
+        <label :for="id">{{label}}</label>
+        <textarea v-if="textarea" :id="id" :rows="rows" :cols="cols" class="autocomplete-input" :placeholder="placeholder" @focusout="focusout" @focus="focus" @keydown.13="chooseItem" @keydown.tab="chooseItem" @keydown.40="moveDown" @keydown.38="moveUp" v-model="inputValue"
+          type="text"></textarea>
+        <input v-else :id="id" class="autocomplete-input" :placeholder="placeholder" @focusout="focusout" @focus="focus" @keydown.13="chooseItem" @keydown.tab="chooseItem" @keydown.40="moveDown" @keydown.38="moveUp" v-model="inputValue" type="text">
+        <ul :class="{
+          'autocomplete-list': true,
+          [id+'-list']: true
+        }" v-if="searchMatch.length > 0">
+          <li :class="{active: selectedIndex === index}" v-for="(result, index) in searchMatch" @click="selectItem(index), chooseItem()" v-html="highlightWord(result)">  
+          </li>
+        </ul>
+      </div>
+    </script>
+  
+    <script src="animal.js"></script>
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="index.js"></script>
   </body>
 </html>

@@ -26,8 +26,8 @@ const Autocomplete = Vue.component("autocomplete", {
           const element = document.querySelectorAll('.' + _self.id + '-list');
 
           if (element[0]) {
-            element[0].style.top = caret.top + 40 + 'px';
-            element[0].style.left = caret.left + 'px';
+            element[0].style.top = caret.top + 100 + 'px';
+            element[0].style.left = 20 + 'px';
           }
         }
       });
